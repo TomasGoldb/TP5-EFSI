@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import './App.css';
-import { BrowserRouter, Routes, Route } from "react-router-dom"; // usa "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom"; 
 import CrearCita from './pages/CrearCita';
 import Home from './pages/Home';
 import VerCitas from './pages/VerCitas';
@@ -24,15 +24,14 @@ function App() {
 
   return (
     <>
-    <BrowserRouter basename="/TP4-EFSI">
+    
     <Header />
       <Routes >
         <Route path="/" element={<Home listado={listado} setListado={setListado} />} />
         <Route path="/Home" element={<Home listado={listado} setListado={setListado} />} />
-        <Route path="/VerCitas" element={<VerCitas listado={listado} />} />
+        <Route path="/VerCitas" element={<VerCitas listado={listado} setListado={setListado} />} />
         <Route path="/CrearCita" element={<CrearCita setListado={setListado} listado={listado} />} />
       </Routes>
-    </BrowserRouter>
     </>
   );
 }
