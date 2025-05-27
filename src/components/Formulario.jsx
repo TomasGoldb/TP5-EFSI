@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import Swal from 'sweetalert2';
 import "/src/components/Formulario.css"
+import { useNavigate } from 'react-router-dom';
 
 export default function Formulario({setListado, listado}) {
+    const navigate = useNavigate();
     const [cita, setCita]=useState({});
     const [idAutNum, setIdAutoNum]=useState(0);
 
@@ -28,6 +30,7 @@ export default function Formulario({setListado, listado}) {
             hora: "",
             sintomas: ""
         });
+        navigate('/VerCitas');
 
     }else {
         Swal.fire({
