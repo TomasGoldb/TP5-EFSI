@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
 import './App.css';
-import Listado from './components/Listado';
-import Formulario from './components/formulario';
+import { BrowserRouter, Routes, Route } from "react-router-dom"; // usa "react-router-dom"
+import CrearCita from './pages/CrearCita';
+import Home from './pages/Home';
+import VerCitas from './pages/VerCitas';
+import Header from './components/Header';
 
 function App() {
   const [listado, setListado] = useState([]);
@@ -13,7 +16,6 @@ function App() {
     }
   }, []);
 
-
   useEffect(() => {
     if (listado.length > 0) {
       localStorage.setItem('tareas', JSON.stringify(listado));
@@ -21,14 +23,27 @@ function App() {
   }, [listado]);
 
   return (
-    <div className='appp'>
-      <h1>Administrador de pacientes</h1>
-      <div className="contenedor-form-list">
-        <Formulario setListado={setListado} listado={listado} />
-        <Listado setListado={setListado} listaCitas={listado} />
-      </div>
-    </div>
+    <>
+    <BrowserRouter basename="/TP4-EFSI">
+    <Header />
+      <Routes >
+        <Route path="/" element={<Home listado={listado} setListado={setListado} />} />
+        <Route path="/Home" element={<Home listado={listado} setListado={setListado} />} />
+        <Route path="/VerCitas" element={<VerCitas listado={listado} />} />
+        <Route path="/CrearCita" element={<CrearCita setListado={setListado} listado={listado} />} />
+      </Routes>
+    </BrowserRouter>
+    </>
   );
 }
 
 export default App;
+
+/*<div className='appp'>
+      <h1>Administrador de pacientes</h1>
+      <div className="contenedor-form-list">
+        
+        
+      </div>
+    </div>
+  );*/

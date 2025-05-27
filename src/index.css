@@ -22,3 +22,9 @@ label{
   color: white;
   font-weight: 600;
 }
+.centrado{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
